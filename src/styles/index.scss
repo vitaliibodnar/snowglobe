@@ -1,5 +1,8 @@
-$body-color: blue;
+@import 'variables';
+@import 'general';
 
-body {
-  color: $body-color;
-}
+@import 'sections';
+
+
+
+
