@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import TweenLight from "gsap/TweenLite";
-import TweenMax from "gsap/TweenMax";
+// import TweenMax from "gsap/TweenMax";
 import TimelineMax from "gsap/TimelineMax";
-import TimelineLite from "gsap/TimelineLite";
+// import TimelineLite from "gsap/TimelineLite";
 
 //
 // FETCH TREES BG-1

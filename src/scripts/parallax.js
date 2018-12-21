@@ -10,6 +10,7 @@ $(".sg-wrapper").mousemove(function(e) {
     parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "']", -30*i);
   }
   parallaxBg(e, ".sg-sky", -15);
+  // parallaxBg(e, ".sg-carousel", -120);
 });
   
 function parallaxBg(e, target, movement) {
@@ -23,6 +24,7 @@ function parallaxBg(e, target, movement) {
     force3D: "true"
   });
 }
+
 //
 //
 //

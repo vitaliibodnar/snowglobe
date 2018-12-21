@@ -1,9 +1,10 @@
 import '../styles/index.scss';
 
-// import $ from 'jquery';
-// import TweenMax from "gsap/TweenMax";
-// import Draggable from "gsap/Draggable"; 
+// import './pixi';
 
 import './parallax';
 import './sky';
 import './trees';
+import './plane';
+import './carousel';
+import './globe';

@@ -47,7 +47,12 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "cloud9carousel": "^2.2.0",
     "gsap": "^2.0.2",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "jquery-touchswipe": "^1.6.19",
+    "pixi-svg": "^1.0.1",
+    "pixi.js": "^4.8.3",
+    "slick-carousel": "^1.8.1"
   }
 }

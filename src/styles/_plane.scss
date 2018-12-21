@@ -1,0 +1,37 @@
+.sg-plane {
+    position: fixed;
+    top: 7%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    &__wrapper {
+      position: absolute;
+      width: 19vw;
+      animation: planeMove 25s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+}
+
+#planeSvg {
+  width: 100%;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+
+/* The animation code */
+@keyframes planeMove {
+  0%   { right: 100%; }
+  10%   { right: 87%; }
+  20%   { right: 74%; }
+  30%   { right: 61%; }
+  40%   { right: 48%; }
+  50%   { right: 35%; }
+  60%   { right: 22%; }
+  70%   { right: 9%; }
+  80%   { right: -4%; }
+  90%   { right: -17%; }
+  100%   { right: -30%; }
+}
