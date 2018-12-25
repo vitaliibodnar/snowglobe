@@ -25,6 +25,7 @@ function prevSlide() {
 next.click(() => {
   nextSlide();
 });
+
 prev.click(() => {
   prevSlide();
 });
@@ -38,12 +39,4 @@ prev.click(() => {
 //       prevSlide();
 //     }
 //   }
-// });
-
-// $('.sg-carousel__dot').click(function() {
-//   $('.sg-carousel__dot').removeClass('is-active');
-//   $(this).addClass('is-active');
-//   var num = $(this).attr('data-number');
-//   console.log(num, $('.sg-carousel__slide[data-position="'+num+'"]'));
-//   $('.sg-carousel__slide[data-position="'+num+'"]').attr('data-current', num);
 // });
