@@ -6,14 +6,11 @@
     height: 40vh;
     z-index: 5;
     &__title {
-        font-family: Sunrise International Demo;
-        line-height: normal;
-        // font-size: 96px;
-        font-size: 48px;
-        color: $c-violet;
-        text-transform: uppercase;
         text-align: center;
         margin-top: -200px;
+        img {
+            max-width: 350px;
+        }
     }
     &__slides {
         position: absolute;
@@ -23,6 +20,7 @@
         // border: 1px solid red;
         img {
             width: 300px;
+            // max-height: 350px;
         }
     }
     &__slide {
@@ -36,14 +34,17 @@
         }
         &[data-current="1"] {
             left: 33.3333%;
+            z-index: 3;
         }
         &[data-current="2"] {
             left: 0;
             transform: scale(0.7);
+            z-index: 2;
         }
         &[data-current="3"] {
             left: 66.6666%;
             transform: scale(0.7);
+            z-index: 1;
         }
     }
     &__nav {

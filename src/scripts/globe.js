@@ -1,5 +1,10 @@
-import $ from 'jquery';
 
+var elements = document.getElementsByClassName('canvas_globe');
+for (var i = 0; i < elements.length; i++)  {
+  initCanvasByElement(elements[i]);
+}
+
+function initCanvasByElement(el) {
 // Request animation frame polyfill
 (function() {
     var lastTime = 0;
@@ -27,8 +32,11 @@ import $ from 'jquery';
         clearTimeout(id);
       };
   })();
+
+
+
   
-  var canvas = document.getElementById("canvas_globe");
+  var canvas = el;
   
   // Make some snow!
   function SnowFlakes(canvas) {
@@ -43,7 +51,7 @@ import $ from 'jquery';
     // Calculate Y offsets to make the snow pile curve
     for (var s = 0; s < this.canvas.width; s += 1) {
       this.snow_curve.push(
-        Math.floor(Math.pow(s - this.middle, 2) * 0.00055) + 140
+        Math.floor(Math.pow(s - this.middle, 2) * 0.00055) + 30
       );
     }
   }
@@ -288,17 +296,9 @@ import $ from 'jquery';
   // ----------- ----------- ----------- -----------
   
   var snowShow = new SnowFlakes(canvas),
-    total_flakes = 3000,
+    total_flakes = 8000,
     flake_width = 3,
     flake_height = 3;
-  
-  // Reduce the number of snow flakes and
-  // increase snow flake size on small screens
-  if ($(window).width() < 1025) {
-    total_flakes = 1000;
-    flake_width = 10;
-    flake_height = 10;
-  }
   
   // Create the snow flakes
   for (var b = 0; b < total_flakes; b += 1) {
@@ -308,8 +308,8 @@ import $ from 'jquery';
       height = Math.floor(Math.random() * flake_height + 1),
       move_y = Math.floor(Math.random() * 150 + 50) / 100,
       move_x = Math.floor(Math.random() * 200 + 50),
-      move_x_speed = Math.floor(Math.random() * 70 + 10) / 100,
-      stop_chance = 2, // 1 out of X chance to stop
+      move_x_speed = Math.floor(Math.random() * 70 + 10) / 50,
+      stop_chance = 1, // 1 out of X chance to stop
       rotate_amount = Math.floor(Math.random() * 5 + 5) * Math.PI / 180,
       front_flake = Math.floor(Math.random() * 6 + 1) === 1 ? true : false,
       opacity = Math.floor(Math.random() * 10 + 1) / 10;
@@ -337,4 +337,4 @@ import $ from 'jquery';
   canvas.onclick = function() {
     snowShow.shake();
   };
-  
+}

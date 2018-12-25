@@ -10,19 +10,15 @@ let carousel = $('.sg-carousel__slides'),
 
 
 function nextSlide() {
-  console.log('next');
   slide.each((i, item) => { 
     let  curPos = item.getAttribute('data-current');
-    console.log(curPos);
     curPos == 3 ? item.setAttribute('data-current', 1) : item.setAttribute('data-current', +curPos + 1);
   });
 }
 
 function prevSlide() {
-  console.log('prev');
   slide.each((i, item) => { 
     let  curPos = item.getAttribute('data-current');
-    console.log(curPos);
     curPos == 1 ? item.setAttribute('data-current', 3) : item.setAttribute('data-current', +curPos - 1);
   });
 }
@@ -32,21 +28,17 @@ next.click(() => {
 prev.click(() => {
   prevSlide();
 });
-$('.sg-carousel__slide[data-current="3"]').click(() => {
-  console.log('current 3 click');
-  nextSlide();
-});
 
-$('.sg-carousel').swipe( {
-  swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-    console.log(direction);
-    if (direction == 'left') {
-      nextSlide();
-    } else if (direction == 'right') {
-      prevSlide();
-    }
-  }
-});
+// $('.sg-carousel').swipe( {
+//   swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+//     console.log(direction);
+//     if (direction == 'left') {
+//       nextSlide();
+//     } else if (direction == 'right') {
+//       prevSlide();
+//     }
+//   }
+// });
 
 // $('.sg-carousel__dot').click(function() {
 //   $('.sg-carousel__dot').removeClass('is-active');
