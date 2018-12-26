@@ -1,6 +1,5 @@
-import all from 'gsap/Draggable';
+import Draggable from 'gsap/Draggable';
 import TweenLite from 'gsap/TweenLite';
-
 
 var elements = document.getElementsByClassName('canvas_globe');
 for (var i = 0; i < elements.length; i++)  {
