@@ -346,7 +346,6 @@ function initCanvasByElement(el) {
   var lastPos = {x:0,y:0};
   Draggable.create( elem , {
     type: "x,y",
-    // edgeResistance:0.5,
     onPress:function(){
       lastPos.x = this.x;
       lastPos.y = this.y; 
@@ -358,7 +357,6 @@ function initCanvasByElement(el) {
 
   Draggable.create( canvas , {
     type: "x,y",
-    // edgeResistance:0.15,
     onPress:function(){
       lastPos.x = this.x;
       lastPos.y = this.y; 
