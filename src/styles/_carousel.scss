@@ -29,6 +29,9 @@
         top: 0;
         text-align: center;
         transition: all .3s;
+        & > div {
+            position: relative;
+        }
         img {
             margin: 0 auto;
         }
@@ -101,6 +104,7 @@
             height: 40vh;
             bottom: -50px;
             width: 18vw;
+            z-index: 4;
             // border: 1px solid forestgreen;
         }
         &--prev {

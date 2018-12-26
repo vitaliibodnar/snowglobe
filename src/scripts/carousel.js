@@ -3,6 +3,7 @@ import 'slick-carousel/slick/slick.scss';
 import $ from 'jquery';
 import swipe from 'jquery-touchswipe';
 
+
 let carousel = $('.sg-carousel__slides'),
     slide = $('.sg-carousel__slide'),
     next = $('.sg-carousel__arrow--next'),
@@ -40,3 +41,4 @@ prev.click(() => {
 //     }
 //   }
 // });
+

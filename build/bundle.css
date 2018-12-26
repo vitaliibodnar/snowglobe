@@ -73,16 +73,17 @@ canvas {
   top: 0;
   left: 0;
   z-index: 1; }
-  .sg-globe .canvas_globe {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    z-index: 0;
-    width: 300px;
-    max-width: 100%;
-    height: auto; }
+
+.canvas_globe {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  border-radius: 50%;
+  z-index: 0;
+  width: 300px;
+  max-width: calc(100% - 2px);
+  height: auto;
+  transform: none !important; }
 
 .sg-plane {
   position: fixed;
@@ -153,6 +154,8 @@ canvas {
     top: 0;
     text-align: center;
     transition: all .3s; }
+    .sg-carousel__slide > div {
+      position: relative; }
     .sg-carousel__slide img {
       margin: 0 auto; }
     .sg-carousel__slide[data-current="1"] {
@@ -211,7 +214,8 @@ canvas {
       position: absolute;
       height: 40vh;
       bottom: -50px;
-      width: 18vw; }
+      width: 18vw;
+      z-index: 4; }
     .sg-carousel__arrow--prev {
       right: 100%; }
       .sg-carousel__arrow--prev:before {

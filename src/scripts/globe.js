@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import 'gsap/Draggable';
+
 
 var elements = document.getElementsByClassName('canvas_globe');
 for (var i = 0; i < elements.length; i++)  {
@@ -334,7 +337,39 @@ function initCanvasByElement(el) {
   snowShow.startSnow();
   
   // Shake the globe on click
-  canvas.onclick = function() {
-    snowShow.shake();
-  };
+  // canvas.onclick = function() {
+  //   snowShow.shake();
+  // };
+
+  var elem = $('.sg-carousel__slide > div');
+
+  var lastPos = {x:0,y:0};
+  Draggable.create( elem , {
+    type: "x,y",
+    // edgeResistance:0.5,
+    onPress:function(){
+      lastPos.x = this.x;
+      lastPos.y = this.y; 
+    },
+    onDragEnd:function(){
+      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+    }
+  });
+
+  Draggable.create( canvas , {
+    type: "x,y",
+    // edgeResistance:0.15,
+    onPress:function(){
+      lastPos.x = this.x;
+      lastPos.y = this.y; 
+    },
+    onDrag:function(){
+      snowShow.shake();
+    },
+    onDragEnd:function(){
+      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+    }
+  }); 
+
 }
+
