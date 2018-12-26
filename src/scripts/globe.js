@@ -1,6 +1,5 @@
-import TweenLite from 'gsap/TweenLite';
 import all from 'gsap/Draggable';
-import $ from 'jquery';
+import TweenLite from 'gsap/TweenLite';
 
 
 var elements = document.getElementsByClassName('canvas_globe');
@@ -342,7 +341,7 @@ function initCanvasByElement(el) {
   //   snowShow.shake();
   // };
 
-  var elem = $('.sg-carousel__slide > div');
+  var elem = document.querySelectorAll('.sg-carousel__slide > div');
 
   var lastPos = {x:0,y:0};
   Draggable.create( elem , {
