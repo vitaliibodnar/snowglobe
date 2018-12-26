@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import 'gsap/Draggable';
+import Draggable from 'gsap/Draggable';
+import create from 'gsap/Draggable';
 
 
 var elements = document.getElementsByClassName('canvas_globe');
