@@ -9,8 +9,7 @@ body {
 *, a, button {
   outline: none;
   text-decoration: none;
-  user-select: none;
-  overflow: hidden; }
+  user-select: none; }
 
 img, svg {
   max-width: 100%; }
@@ -29,7 +28,8 @@ img, svg {
   width: 108%;
   height: 108%;
   left: -4%;
-  bottom: -4%; }
+  bottom: -4%;
+  overflow: hidden; }
   .sg-section__bg {
     position: absolute;
     bottom: 0;

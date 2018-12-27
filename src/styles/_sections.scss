@@ -4,6 +4,7 @@
     height: 108%;
     left: -4%;
     bottom: -4%;
+    overflow: hidden;
     &__bg {
         position: absolute;
         bottom: 0;
@@ -52,3 +53,4 @@
         width: 100%;
     }
 }
+
