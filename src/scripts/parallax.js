@@ -5,12 +5,20 @@ import TweenLite from "gsap/TweenLite";
 //
 // Background parallax movement
 //
-$(".sg-wrapper").mousemove(function(e) {
-  let i = 1;
-  for(i; i <= 4; i++) {
-    parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "']", -30*i);
-  }
-});
+function is_touch_device() {
+  return (('ontouchstart' in window)
+       || (navigator.MaxTouchPoints > 0)
+       || (navigator.msMaxTouchPoints > 0));
+ }
+ 
+ if (!is_touch_device()) {
+  $(".sg-wrapper").mousemove(function(e) {
+    let i = 1;
+    for(i; i <= 4; i++) {
+      parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "']", -30*i);
+    }
+  });
+ }
   
 function parallaxBg(e, target, movement) {
   var $this = $(".sg-section");

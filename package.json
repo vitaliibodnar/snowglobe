@@ -53,6 +53,7 @@
     "jquery-touchswipe": "^1.6.19",
     "pixi-svg": "^1.0.1",
     "pixi.js": "^4.8.3",
+    "shake.js": "^1.2.2",
     "slick-carousel": "^1.8.1"
   }
 }

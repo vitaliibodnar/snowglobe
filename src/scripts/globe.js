@@ -1,6 +1,7 @@
 import Draggable from 'gsap/Draggable';
 import TweenLite from 'gsap/TweenLite';
 import $ from 'jquery';
+import Shake from 'shake.js';
 
 var elements = document.getElementsByClassName('canvas_globe');
 for (var i = 0; i < elements.length; i++)  {
@@ -519,9 +520,39 @@ if (wWidth < 1025) {
     'I hear and I forget. I see and I remember. I do and I understand.',
   ];
 
+  function successShake() {
+    $('.sg-final__img[data-hero="'+el.getAttribute('data-animal')+'"]').addClass('is-active');
+    var msg = fortuneText[Math.floor(Math.random()*fortuneText.length)];
+    $('.sg-final__msg').text(msg);
+    setTimeout(function(){
+      $('.sg-final').addClass('is-active');
+    },1500);
+  }
+  function unsuccessShake() {
+    selectText.removeClass('is-visible');
+    shakeMoreText.addClass('is-visible');
+    setTimeout(function(){
+      shakeMoreText.removeClass('is-visible');
+      selectText.addClass('is-visible');
+    },1500);
+  }
   var ww = $(window).width();
   if (ww < 768) {
-    
+    //listen to shake event
+    var shakeEvent = new Shake({threshold: 15});
+    shakeEvent.start();
+    window.addEventListener('shake', function(){
+        console.log("Shaked");
+        snowShow.shake();
+        successShake();
+    }, false);
+
+    //stop listening
+    function stopShake(){
+        shakeEvent.stop();
+    }
+    //check if shake is supported or not.
+    // if(!("ondevicemotion" in window)){alert("Not Supported");}
   } else {
     var lastPos = {x:0,y:0};
     Draggable.create( elem , {
@@ -550,20 +581,10 @@ if (wWidth < 1025) {
       onDragEnd:function(){
         if (showPopup == false) {
           clearTimeout(dragTime);
-          selectText.removeClass('is-visible');
-          shakeMoreText.addClass('is-visible');
-          setTimeout(function(){
-            shakeMoreText.removeClass('is-visible');
-            selectText.addClass('is-visible');
-          },1500);
+          unsuccessShake();
         }
         else {
-          $('.sg-final__img[data-hero="'+el.getAttribute('data-animal')+'"]').addClass('is-active');
-          var msg = fortuneText[Math.floor(Math.random()*fortuneText.length)];
-          $('.sg-final__msg').text(msg);
-          setTimeout(function(){
-            $('.sg-final').addClass('is-active');
-          },1500);
+          successShake();
         }
         TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
       }

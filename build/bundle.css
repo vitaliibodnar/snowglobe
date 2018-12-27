@@ -38,12 +38,14 @@ img, svg {
     @media (max-width: 767px) and (orientation: portrait) {
       .sg-section__bg {
         width: 200%;
-        left: -50%; } }
+        left: -50%;
+        overflow: hidden; } }
   .sg-section__trees {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%; }
+    width: 100%;
+    overflow: hidden; }
     @media (max-width: 767px) and (orientation: portrait) {
       .sg-section__trees {
         width: 200%;

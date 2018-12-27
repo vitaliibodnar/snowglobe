@@ -13,6 +13,7 @@
         @media (max-width: 767px) and (orientation: portrait) {
             width: 200%;
             left: -50%;
+            overflow: hidden;
         }
     }
     &__trees {
@@ -20,6 +21,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        overflow: hidden;
         @media (max-width: 767px) and (orientation: portrait) {
             width: 200%;
             left: -50%;
