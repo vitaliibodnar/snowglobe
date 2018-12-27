@@ -1,0 +1,71 @@
+.sg-final {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    z-index: 0;
+    padding: 10em;
+    box-sizing: border-box;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+    &.is-active {
+        z-index: 9;
+        visibility: visible;
+        opacity: 1;
+    }
+    &__wrapper {
+        margin: 5em 0 0;
+        width: 100%;
+        max-width: 1024px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &__msg {
+        width: 500px;
+        height: 280px;
+        margin: 0 auto;
+        background-image: url(../img/msg-bg.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 42px;
+        font-size: 24px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        color: #484D6D;
+        padding: 20px 70px 20px 40px;
+        box-sizing: border-box;
+        @media (max-width: 1024px) {
+            margin: 0 1em;
+        }
+    }
+    &__img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+        &.is-active {
+            visibility: visible;
+        }
+    }
+    .sg-again {
+        margin-top: 10em;
+        background: none;
+        box-shadow: none;
+        border: none;
+        cursor: pointer;
+        transition: .3s;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

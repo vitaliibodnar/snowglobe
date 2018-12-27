@@ -1,5 +1,6 @@
 import Draggable from 'gsap/Draggable';
 import TweenLite from 'gsap/TweenLite';
+import $ from 'jquery';
 
 var elements = document.getElementsByClassName('canvas_globe');
 for (var i = 0; i < elements.length; i++)  {
@@ -53,7 +54,7 @@ function initCanvasByElement(el) {
     // Calculate Y offsets to make the snow pile curve
     for (var s = 0; s < this.canvas.width; s += 1) {
       this.snow_curve.push(
-        Math.floor(Math.pow(s - this.middle, 2) * 0.00055) + 30
+        Math.floor(Math.pow(s - this.middle, 2) * 0.00055) + 45
       );
     }
   }
@@ -298,9 +299,18 @@ function initCanvasByElement(el) {
   // ----------- ----------- ----------- -----------
   
   var snowShow = new SnowFlakes(canvas),
-    total_flakes = 8000,
-    flake_width = 3,
-    flake_height = 3;
+    total_flakes = 13000,
+    flake_width = 5,
+    flake_height = 5;
+
+// Reduce the number of snow flakes and 
+// increase snow flake size on small screens
+var wWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+if (wWidth < 1025) {
+	total_flakes = 10000;
+	flake_width = 5;
+	flake_height = 5;
+}
   
   // Create the snow flakes
   for (var b = 0; b < total_flakes; b += 1) {
@@ -310,7 +320,7 @@ function initCanvasByElement(el) {
       height = Math.floor(Math.random() * flake_height + 1),
       move_y = Math.floor(Math.random() * 150 + 50) / 100,
       move_x = Math.floor(Math.random() * 200 + 50),
-      move_x_speed = Math.floor(Math.random() * 70 + 10) / 50,
+      move_x_speed = Math.floor(Math.random() * 70 + 10) / 30,
       stop_chance = 1, // 1 out of X chance to stop
       rotate_amount = Math.floor(Math.random() * 5 + 5) * Math.PI / 180,
       front_flake = Math.floor(Math.random() * 6 + 1) === 1 ? true : false,
@@ -341,32 +351,232 @@ function initCanvasByElement(el) {
   // };
 
   var elem = document.querySelectorAll('.sg-carousel__slide > div');
+  var showPopup = false,
+      dragTime = null;
+  function startTimer() {
+    dragTime = 0;
+    showPopup = false;
+    dragTime = setTimeout(function(){ showPopup = true; }, 5000);
+  }
 
-  var lastPos = {x:0,y:0};
-  Draggable.create( elem , {
-    type: "x,y",
-    onPress:function(){
-      lastPos.x = this.x;
-      lastPos.y = this.y; 
-    },
-    onDragEnd:function(){
-      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
-    }
+  var shakeMoreText = $('.sg-title-shake'),
+      selectText = $('.sg-title-select');
+
+  var fortuneText = [
+    'Today it\'s up to you to create the peacefulness you long for.',
+    'A friend asks only for your time not your money.',
+    'If you refuse to accept anything but the best, you very often get it.',
+    'A smile is your passport into the hearts of others.',
+    'A good way to keep healthy is to eat more Chinese food.',
+    'Your high-minded principles spell success.',
+    'Hard work pays off in the future, laziness pays off now.',
+    'Change can hurt, but it leads a path to something better.',
+    'Enjoy the good luck a companion brings you.',
+    'People are naturally attracted to you.',
+    'A chance meeting opens new doors to success and friendship.',
+    'You learn from your mistakes... You will learn a lot today.',
+    'If you have something good in your life, don\'t let it go!',
+    'What ever you\'re goal is in life, embrace it visualize it, and for it will be yours.',
+    'Your shoes will make you happy today.',
+    'You cannot love life until you live the life you love.',
+    'Be on the lookout for coming events; They cast their shadows beforehand.',
+    'Land is always on the mind of a flying bird.',
+    'The man or woman you desire feels the same about you.',
+    'Meeting adversity well is the source of your strength.',
+    'A dream you have will come true.',
+    'Our deeds determine us, as much as we determine our deeds.',
+    'Never give up. You\'re not a failure if you don\'t give up.',
+    'You will become great if you believe in yourself.',
+    'There is no greater pleasure than seeing your loved ones prosper.',
+    'You will marry your lover.',
+    'A very attractive person has a message for you.',
+    'You already know the answer to the questions lingering inside your head.',
+    'It is now, and in this world, that we must live.',
+    'You must try, or hate yourself for not trying.',
+    'You can make your own happiness.',
+    'The greatest risk is not taking one.',
+    'The love of your life is stepping into your planet this summer.',
+    'Love can last a lifetime, if you want it to.',
+    'Adversity is the parent of virtue.',
+    'Serious trouble will bypass you.',
+    'A short stranger will soon enter your life with blessings to share.',
+    'Now is the time to try something new.',
+    'Wealth awaits you very soon.',
+    'If you feel you are right, stand firmly by your convictions.',
+    'If winter comes, can spring be far behind?',
+    'Keep your eye out for someone special.',
+    'You are very talented in many ways.',
+    'A stranger, is a friend you have not spoken to yet.',
+    'A new voyage will fill your life with untold memories.',
+    'You will travel to many exotic places in your lifetime.',
+    'Your ability for accomplishment will follow with success.',
+    'Nothing astonishes men so much as common sense and plain dealing.',
+    'Its amazing how much good you can do if you dont care who gets the credit.',
+    'Everyone agrees. You are the best.',
+    'Jealousy doesn\'t open doors, it closes them!',
+    'It\'s better to be alone sometimes.',
+    'When fear hurts you, conquer it and defeat it!',
+    'Let the deeds speak.',
+    'You will be called in to fulfill a position of high honor and responsibility.',
+    'The man on the top of the mountain did not fall there.',
+    'You will conquer obstacles to achieve success.',
+    'Joys are often the shadows, cast by sorrows.',
+    'Fortune favors the brave.',
+    'An upward movement initiated in time can counteract fate.',
+    'A journey of a thousand miles begins with a single step.',
+    'Sometimes you just need to lay on the floor.',
+    'Never give up. Always find a reason to keep trying.',
+    'If you have something worth fighting for, then fight for it.',
+    'Stop wishing. Start doing.',
+    'Hone your competitive instincts.',
+    'Finish your work on hand don\'t be greedy.',
+    'For success today, look first to yourself.',
+    'Your fortune is as sweet as a cookie.',
+    'Integrity is the essence of everything successful.',
+    'If you\'re happy, you\'re successful.',
+    'You will always be surrounded by true friends.',
+    'Believing that you are beautiful will make you appear beautiful to others around you.',
+    'Happinees comes from a good life.',
+    'Before trying to please others think of what makes you happy.',
+    'When hungry, order more Chinese food.',
+    'Your golden opportunity is coming shortly.',
+    'For hate is never conquered by hate. Hate is conquered by love .',
+    'You will make many changes before settling down happily.',
+    'A man is born to live and not prepare to live.',
+    'You cannot become rich except by enriching others.',
+    'Don\'t pursue happiness - create it.',
+    'You will be successful in love.',
+    'All your fingers can\'t be of the same length.',
+    'Wise sayings often fall on barren ground, but a kind word is never thrown away.',
+    'A lifetime of happiness is in store for you.',
+    'It is very possible that you will achieve greatness in your lifetime.',
+    'Be tactful; overlook your own opportunity.',
+    'You are the controller of your destiny.',
+    'Everything happens for a reson.',
+    'How can you have a beutiful ending without making beautiful mistakes.',
+    'You can open doors with your charm and patience.',
+    'Welcome the change coming into your life.',
+    'There will be a happy romance for you shortly.',
+    'Your fondest dream will come true within this year.',
+    'You have a deep interest in all that is artistic.',
+    'Your emotional nature is strong and sensitive.',
+    'A letter of great importance may reach you any day now.',
+    'Good health will be yours for a long time.',
+    'You will become better acquainted with a coworker.',
+    'To be old and wise, you must first be young and stupid.',
+    'Failure is only the opportunity to begin again more intelligently.',
+    'Integrity is doing the right thing, even if nobody is watching.',
+    'Conquer your fears or they will conquer you.',
+    'You are a lover of words; One day you will write a book.',
+    'In this life it is not what we take up, but what we give up, that makes us rich.',
+    'Fear can keep us up all night long, but faith makes one fine pillow.',
+    'Seek out the significance of your problem at this time. Try to understand.',
+    'He who slithers among the ground is not always a foe.',
+    'You learn from your mistakes, you will learn a lot today.',
+    'You only need look to your own reflection for inspiration.',
+    'You are not judged by your efforts you put in; you are judged on your performance.',
+    'Rivers need springs.',
+    'Good news from afar may bring you a welcome visitor.',
+    'When all else seems to fail, smile for today and just love someone.',
+    'Patience is a virtue, unless its against a brick wall.',
+    'When you look down, all you see is dirt, so keep looking up.',
+    'If you are afraid to shake the dice, you will never throw a six.',
+    'Even if the person who appears most wrong, is also quite often right.',
+    'A single conversation with a wise man is better than ten years of study.',
+    'Happiness is often a rebound from hard work.',
+    'The world may be your oyster, but that doesn\'t mean you\'ll get it\'s pearl.',
+    'Your life will be filled with magical moments.',
+    'You\'re true love will show himself to you under the moonlight.',
+    'I think, you ate your fortune while you were eating your cookie.',
+    'If u love someone keep fighting for them.',
+    'Do what you want, when you want, and you will be rewarded.',
+    'Let your fantasies unwind...',
+    'The cooler you think you are the dumber you look.',
+    'Expect great things and great things will come.',
+    'The Wheel of Good Fortune is finally turning in your direction!',
+    'Don\'t lead if you won\'t lead.',
+    'You will always be successful in your professional career.',
+    'Share your hapiness with others today.',
+    'It\'s up to you to clearify.',
+    'Your future will be happy and productive.',
+    'Seize every second of your life and savor it.',
+    'Those who walk in other\'s tracks leave no footprints.',
+    'Failure is the mother of all success.',
+    'Difficulty at the beginning useually means ease at the end.',
+    'Do not seek so much to find the answer as much as to understand the question better.',
+    'Your way of doing what other people do their way is what makes you special.',
+    'A beautiful, smart, and loving person will be coming into your life.',
+    'Friendship is an ocean that you cannot see bottom.',
+    'Your life does not get better by chance, it gets better by change.',
+    'Our duty,as men and women,is to proceed as if limits to our ability did not exist.',
+    'A pleasant expeience is ahead:don\'t pass it by.',
+    'Our perception and attitude toward any situation will determine the outcome.',
+    'They say you are stubborn; you call it persistence.',
+    'Two small jumps are sometimes better than one big leap.',
+    'A new wardrobe brings great joy and change to your life.',
+    'The cure for grief is motion.',
+    'It\'s a good thing that life is not as serious as it seems to the waiter.',
+    'I hear and I forget. I see and I remember. I do and I understand.',
+  ];
+
+  var ww = $(window).width();
+  if (ww < 768) {
+    
+  } else {
+    var lastPos = {x:0,y:0};
+    Draggable.create( elem , {
+      type: "x,y",
+      onPress:function(){
+        lastPos.x = this.x;
+        lastPos.y = this.y; 
+      },
+      onDragEnd:function(){
+        TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+      }
+    });
+    Draggable.create( canvas , {
+      type: "x,y",
+      onPress:function(){
+        lastPos.x = this.x;
+        lastPos.y = this.y; 
+      },
+      onDragStart:function(){
+        startTimer();
+        snowShow.shake();
+      },
+      onDrag:function(){
+        
+      },
+      onDragEnd:function(){
+        if (showPopup == false) {
+          clearTimeout(dragTime);
+          selectText.removeClass('is-visible');
+          shakeMoreText.addClass('is-visible');
+          setTimeout(function(){
+            shakeMoreText.removeClass('is-visible');
+            selectText.addClass('is-visible');
+          },1500);
+        }
+        else {
+          $('.sg-final__img[data-hero="'+el.getAttribute('data-animal')+'"]').addClass('is-active');
+          var msg = fortuneText[Math.floor(Math.random()*fortuneText.length)];
+          $('.sg-final__msg').text(msg);
+          setTimeout(function(){
+            $('.sg-final').addClass('is-active');
+          },1500);
+        }
+        TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+      }
+    });
+  }
+  
+
+  $('.sg-again').click(function(){
+    $('.sg-final').removeClass('is-active');
+    setTimeout(function(){
+      $('.sg-final__img').removeClass('is-active');
+      $('.sg-final__msg').text('');
+    },1500);
   });
-
-  Draggable.create( canvas , {
-    type: "x,y",
-    onPress:function(){
-      lastPos.x = this.x;
-      lastPos.y = this.y; 
-    },
-    onDrag:function(){
-      snowShow.shake();
-    },
-    onDragEnd:function(){
-      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
-    }
-  }); 
-
 }
 

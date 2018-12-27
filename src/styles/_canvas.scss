@@ -22,16 +22,22 @@ canvas {
     top: 0;
     left: 0;
     z-index: 1;
+    @media (max-width: 767px) and (orientation: landscape) {
+        width: 186px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 .canvas_globe {
     position: absolute;
     // border: 1px solid red;
     top: 0;
-    left: 1px;
+    left: 2px;
     border-radius: 50%;
     z-index: 0;
-    width: 300px;
-    max-width: calc(100% - 2px);
+    width: calc(100% - 4px);
+    max-width: calc(100% - 4px);
     height: auto;
     transform: none!important;
+    
 }

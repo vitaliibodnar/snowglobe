@@ -31,14 +31,32 @@ prev.click(() => {
   prevSlide();
 });
 
-// $('.sg-carousel').swipe( {
-//   swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-//     console.log(direction);
-//     if (direction == 'left') {
-//       nextSlide();
-//     } else if (direction == 'right') {
-//       prevSlide();
-//     }
-//   }
-// });
+function swipeSlide() {
+  $('.sg-carousel').swipe( {
+    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+      console.log(direction);
+      if (direction == 'left') {
+        nextSlide();
+      } else if (direction == 'right') {
+        prevSlide();
+      }
+    }
+  });
+}
+
+var ww = $(window).width();
+if (ww < 768) {
+  swipeSlide();
+}
+
+function is_touch_device() {
+  return (('ontouchstart' in window)
+       || (navigator.MaxTouchPoints > 0)
+       || (navigator.msMaxTouchPoints > 0));
+ }
+ 
+ if (is_touch_device()) {
+  console.log('touch');
+  // swipeSlide();
+ }
 

@@ -9,12 +9,20 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        @media (max-width: 767px) and (orientation: portrait) {
+            width: 200%;
+            left: -50%;
+        }
     }
     &__trees {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
+        @media (max-width: 767px) and (orientation: portrait) {
+            width: 200%;
+            left: -50%;
+        }
     }
 
     &[data-section="1"] {
