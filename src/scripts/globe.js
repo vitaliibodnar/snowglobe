@@ -542,15 +542,18 @@ if (wWidth < 1025) {
     var shakeEvent = new Shake({threshold: 15});
     shakeEvent.start();
     window.addEventListener('shake', function(){
-        console.log("Shaked");
         snowShow.shake();
-        successShake();
+        if (showPopup == false) {
+          clearTimeout(dragTime);
+          unsuccessShake();
+          shakeEvent.stop();
+        }
+        else {
+          successShake();
+        }
     }, false);
 
-    //stop listening
-    function stopShake(){
-        shakeEvent.stop();
-    }
+    
     //check if shake is supported or not.
     // if(!("ondevicemotion" in window)){alert("Not Supported");}
   } else {
