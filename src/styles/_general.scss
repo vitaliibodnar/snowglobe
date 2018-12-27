@@ -11,6 +11,7 @@ body {
   outline: none;
   text-decoration: none;
   user-select: none;
+  overflow: hidden;
 }
 img, svg {
   max-width: 100%;
@@ -19,7 +20,6 @@ img, svg {
 .sg-wrapper {
   overflow: hidden;
 }
-
 
 .sg-logo {
   position: fixed;

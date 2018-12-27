@@ -9,7 +9,8 @@ body {
 *, a, button {
   outline: none;
   text-decoration: none;
-  user-select: none; }
+  user-select: none;
+  overflow: hidden; }
 
 img, svg {
   max-width: 100%; }
