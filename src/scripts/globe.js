@@ -1,7 +1,7 @@
 import Draggable from 'gsap/Draggable';
 import TweenLite from 'gsap/TweenLite';
 import $ from 'jquery';
-import Shake from 'shake.js';
+// import Shake from 'shake.js';
 
 var elements = document.getElementsByClassName('canvas_globe');
 for (var i = 0; i < elements.length; i++)  {
@@ -357,7 +357,7 @@ if (wWidth < 1025) {
   function startTimer() {
     dragTime = 0;
     showPopup = false;
-    dragTime = setTimeout(function(){ showPopup = true; }, 5000);
+    dragTime = setTimeout(function(){ showPopup = true; }, 3000);
   }
 
   var shakeMoreText = $('.sg-title-shake'),
@@ -536,63 +536,42 @@ if (wWidth < 1025) {
       selectText.addClass('is-visible');
     },1500);
   }
-  var ww = $(window).width();
-  if (ww < 768) {
-    //listen to shake event
-    var shakeEvent = new Shake({threshold: 15});
-    shakeEvent.start();
-    window.addEventListener('shake', function(){
-        snowShow.shake();
-        if (showPopup == false) {
-          clearTimeout(dragTime);
-          unsuccessShake();
-          shakeEvent.stop();
-        }
-        else {
-          successShake();
-        }
-    }, false);
-
-    
-    //check if shake is supported or not.
-    // if(!("ondevicemotion" in window)){alert("Not Supported");}
-  } else {
-    var lastPos = {x:0,y:0};
-    Draggable.create( elem , {
-      type: "x,y",
-      onPress:function(){
-        lastPos.x = this.x;
-        lastPos.y = this.y; 
-      },
-      onDragEnd:function(){
-        TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+  
+  var lastPos = {x:0,y:0};
+  Draggable.create( elem , {
+    type: "x,y",
+    onPress:function(){
+      lastPos.x = this.x;
+      lastPos.y = this.y; 
+    },
+    onDragEnd:function(){
+      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+    }
+  });
+  Draggable.create( canvas , {
+    type: "x,y",
+    onPress:function(){
+      lastPos.x = this.x;
+      lastPos.y = this.y; 
+    },
+    onDragStart:function(){
+      startTimer();
+      snowShow.shake();
+    },
+    onDrag:function(){
+      
+    },
+    onDragEnd:function(){
+      if (showPopup == false) {
+        clearTimeout(dragTime);
+        unsuccessShake();
       }
-    });
-    Draggable.create( canvas , {
-      type: "x,y",
-      onPress:function(){
-        lastPos.x = this.x;
-        lastPos.y = this.y; 
-      },
-      onDragStart:function(){
-        startTimer();
-        snowShow.shake();
-      },
-      onDrag:function(){
-        
-      },
-      onDragEnd:function(){
-        if (showPopup == false) {
-          clearTimeout(dragTime);
-          unsuccessShake();
-        }
-        else {
-          successShake();
-        }
-        TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+      else {
+        successShake();
       }
-    });
-  }
+      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+    }
+  });
   
 
   $('.sg-again').click(function(){

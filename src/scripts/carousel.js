@@ -32,7 +32,7 @@ prev.click(() => {
 });
 
 function swipeSlide() {
-  $('.sg-carousel').swipe( {
+  $('.sg-section').swipe( {
     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
       if (direction == 'left') {
         nextSlide();
