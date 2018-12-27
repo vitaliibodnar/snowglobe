@@ -39,5 +39,8 @@ canvas {
     max-width: calc(100% - 4px);
     height: auto;
     transform: none!important;
-    
+    cursor: url("../img/cursor-default.png"), auto!important;
+    &:active {
+        cursor: url("../img/cursor-active.png"), auto!important;
+    }
 }

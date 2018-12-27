@@ -301,16 +301,16 @@ function initCanvasByElement(el) {
   
   var snowShow = new SnowFlakes(canvas),
     total_flakes = 13000,
-    flake_width = 5,
-    flake_height = 5;
+    flake_width = 6,
+    flake_height = 6;
 
 // Reduce the number of snow flakes and 
 // increase snow flake size on small screens
 var wWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 if (wWidth < 1025) {
-	total_flakes = 10000;
-	flake_width = 5;
-	flake_height = 5;
+	total_flakes = 13000;
+	flake_width = 6;
+	flake_height = 6;
 }
   
   // Create the snow flakes

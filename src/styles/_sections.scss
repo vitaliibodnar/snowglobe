@@ -3,8 +3,17 @@
     width: 108%;
     height: 108%;
     left: -4%;
-    bottom: -4%;
+    // bottom: -4%;
+    bottom: -3000px;
     overflow: hidden;
+    transition: all 1s;
+    visibility: hidden;
+    opacity: 0;
+    &.is-visible {
+        bottom: -4%;
+        opacity: 1;
+        visibility: visible;
+    }
     &__bg {
         position: absolute;
         bottom: 0;
@@ -30,7 +39,7 @@
 
     &[data-section="1"] {
         z-index: 4;
-        bottom: -5%;
+        // bottom: -5%;
     }
     &[data-section="2"] {
         z-index: 3;
@@ -45,9 +54,11 @@
 
 .sg-sky {
     position: absolute;
-    top: -100px;
+    // top: -100px;
+    top: -1000px;
     left: -2%;
     width: 104%;
+    transition: top 2s ease-out;
     svg {
         position: absolute;
         top: 0;
@@ -56,3 +67,24 @@
     }
 }
 
+
+.sg-slide {
+    transition: transform .3s;
+}
+
+.sg-start {
+    opacity: 1;
+    transition: .5s;
+    border: none;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    position: absolute;
+    top: calc(100% + 50px);
+    left: 50%;
+    // transform: translateX(-50%);
+    span {
+        display: block;
+        margin-bottom: 15px;
+    }
+}

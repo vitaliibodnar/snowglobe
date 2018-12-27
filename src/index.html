@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="icon" type="image/svg+xml" href="../src/img/mouse-default.svg">
+  <link rel="icon" type="image/svg+xml" href="../src/img/cursor-default.png">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <title>Snowglobe</title>
   <style>
@@ -16,22 +16,42 @@
       padding: 0;
       margin: 0;
     }
-    .sg-loader {
+    .sg-logo {
+      position: fixed;
+      top: 50px;
+      left: 50px;
+      z-index: 13;
+    }
+    .sg-splash {
       background: #e5e5e5;
       width: 100vw;
       height: 100vh;
       position: fixed;
       z-index: 11;
-      display: none;
     }
-    .sg-loader img {
+    .sg-baloon {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 100%;
+      left: 0;
+      width: 100%;
+      text-align: center;
     }
-    .is-loading .sg-loader {
-      display: block;
+    .sg-baloon__img {
+      max-height: 60vh;
+    }
+    .is-moving {
+      animation: baloonMove 3s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+    }
+    .sg-start {
+      opacity: 0;
+    }
+
+    @keyframes baloonMove {
+      0%   { top: 100% }
+      40%   { top: -10% }
+      100%   { top: 1% }
     }
   </style>
 </head>
@@ -39,16 +59,22 @@
   <!-- <canvas id="sg-app"></canvas> -->
   <!-- .sg-wrapper .is-loading - preloader -->
   <div class="sg-wrapper">
-      <div class="sg-loader"><img src="../src/img/preloader.gif" alt=""></div>
       <div class="sg-logo"><img src="../src/img/pf-logo.svg" alt=""></div>
       <!-- SLIDE-1 -->
-      <section class="sg-slide" data-slide="1">
+      <section class="sg-splash sg-slide" data-slide="1">
         <div class="sg-sky"></div>
+        <div class="sg-baloon">
+          <img src="../src/img/baloon.svg" class="sg-baloon__img" alt="">
+          <button class="sg-start">
+            <span>Try your luck!</span>
+            <img src="../src/img/arrow-down.svg" alt="">
+          </button>
+        </div>
       </section>
 
 
       <!-- SLIDE-2 -->
-      <section class="sg-slide" id="scene">
+      <section class="sg-slide">
         <section class="sg-plane"></section>
         <section class="sg-section" data-section="1" data-depth="0.8">
           <div class="sg-section__bg" data-bg="1"><img src="../src/img/bg-1.png" alt=""></div>

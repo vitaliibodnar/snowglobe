@@ -17,6 +17,9 @@ function is_touch_device() {
     for(i; i <= 4; i++) {
       parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "']", -30*i);
     }
+    parallaxBg(e, ".sg-sky", -10);
+    parallaxBg(e, ".sg-baloon", -30);
+
   });
  }
   

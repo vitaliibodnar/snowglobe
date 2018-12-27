@@ -47,4 +47,3 @@ var ww = $(window).width();
 if (ww < 768) {
   swipeSlide();
 }
-
