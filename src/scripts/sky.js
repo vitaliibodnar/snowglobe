@@ -16,6 +16,7 @@ fetch("../src/img/bg-sky.svg")
 
 window.onload = function() {
   setTimeout(function(){
+    $('#app-preloader').addClass('is-hidden');
     $('.sg-splash').css('background', 'none');
     $('.sg-baloon').addClass('is-moving');
     $('.sg-sky').css('top', '-200px');

@@ -22,6 +22,13 @@
       left: 50px;
       z-index: 13;
     }
+    @media (max-width: 767px) {
+      .sg-logo {
+        max-width: 150px;
+        top: 20px;
+        left: 30px; 
+      }
+    }
     .sg-splash {
       background: #e5e5e5;
       width: 100vw;
@@ -80,12 +87,74 @@
       0%   { top: 5% }
       100%   { top: -5000px }
     }
+
+    #app-preloader {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 100%;
+      z-index: 30;
+      transition: all .3s;
+    }
+    #app-preloader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      z-index: 0;
+      pointer-events: none;
+      height: 0;
+    }
+    #app-preloader span {
+      background: #bdc0ca;
+      display: inline-block;
+      height: 10px;
+      margin: 0 5px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      vertical-align: top;
+      width: 10px;
+    }
+    #app-preloader span:nth-child(1) {
+      animation: pulse 1s infinite 0.2s;
+    }
+    #app-preloader span:nth-child(2) {
+      animation: pulse 1s infinite 0.4s;
+    }
+    #app-preloader span:nth-child(3) {
+      animation: pulse 1s infinite 0.6s;
+    }
+    #app-preloader span:nth-child(4) {
+      animation: pulse 1s infinite 0.8s;
+    }
+    #app-preloader span:nth-child(5) {
+      animation: pulse 1s infinite 1s;
+    }
+    .no-cssanimations #app-preloader {
+      background: #000 url("preloader-fallback.gif") no-repeat 50% 50%;
+    }
+    .no-cssanimations #app-preloader span {
+      display: none;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.2;
+      }
+    }
+
   </style>
 </head>
 <body class="">
   <!-- <canvas id="sg-app"></canvas> -->
   <!-- .sg-wrapper .is-loading - preloader -->
   <div class="sg-wrapper">
+      <div id="app-preloader"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="sg-logo"><img src="../src/img/pf-logo.svg" alt=""></div>
       <!-- SLIDE-1 -->
       <section class="sg-splash sg-slide" data-slide="1">

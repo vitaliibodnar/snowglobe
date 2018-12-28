@@ -12,6 +12,15 @@
     visibility: hidden;
     opacity: 0;
     transition: 1s;
+    @media (max-width: 1399px) {
+        padding: 5em;
+    }
+    @media (max-width: 1024px) and (orientation: portrait) {
+        padding: 10em 5em;
+    }
+    @media (max-width: 767px) {
+        padding: 80px 30px 30px;
+    }
     &.is-active {
         z-index: 9;
         visibility: visible;
@@ -24,6 +33,9 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        @media (max-width: 1399px) {
+            margin: 30px 0 0;
+        }
     }
     &__msg {
         width: 500px;
@@ -45,7 +57,18 @@
         padding: 20px 70px 20px 40px;
         box-sizing: border-box;
         @media (max-width: 1024px) {
-            margin: 0 1em;
+            margin: 0 auto;
+        }
+        @media (max-width: 1024px) and (orientation: portrait) {
+            margin: 0;
+        }
+        @media (max-width: 767px) {
+            width: 65%;
+            height: 200px;
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0 20px;
+            padding: 40px 30px 40px 30px;
         }
     }
     &__img {
@@ -56,6 +79,10 @@
         &.is-active {
             visibility: visible;
         }
+        @media (max-width: 767px) {
+            max-width: 30%;
+            top: 30px;
+        }
     }
     .sg-again {
         margin-top: 10em;
@@ -64,6 +91,17 @@
         border: none;
         cursor: pointer;
         transition: .3s;
+        @media (max-width: 1399px) {
+            margin-top: 30px;
+        }
+        @media (max-width: 1024px) and (orientation: portrait) {
+            display: block;
+            margin: 30px 125px;
+        }
+        @media (max-width: 767px) {
+            width: 150px;
+            margin: 30px auto;
+        }
         &:hover {
             opacity: 0.8;
         }
