@@ -14,15 +14,13 @@ img, svg {
   width: 108%;
   height: 108%;
   left: -4%;
-  bottom: -3000px;
+  bottom: -100%;
   overflow: hidden;
-  transition: all 1s;
-  visibility: hidden;
-  opacity: 0; }
+  transition: all 1s; }
   .sg-section.is-visible {
-    bottom: -4%;
-    opacity: 1;
-    visibility: visible; }
+    bottom: -40%; }
+  .sg-section.is-active {
+    bottom: -4%; }
   .sg-section__bg {
     position: absolute;
     bottom: 0;
@@ -75,11 +73,15 @@ img, svg {
   box-shadow: none;
   cursor: pointer;
   position: absolute;
-  top: calc(100% + 50px);
-  left: 50%; }
+  top: calc(100% + 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top .3s; }
   .sg-start span {
     display: block;
     margin-bottom: 15px; }
+  .sg-start:hover {
+    top: calc(100% + 40px); }
 
 #sg-app {
   width: 100vw;
@@ -126,21 +128,17 @@ canvas {
   .sg-plane__wrapper {
     position: absolute;
     width: 19vw;
-    animation: planeMove 25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear; }
+    right: 100%; }
     @media (max-width: 767px) and (orientation: portrait) {
       .sg-plane__wrapper {
         width: 30vw; } }
+    .sg-plane__wrapper.is-moving {
+      animation: planeMove 25s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear; }
   @media (max-width: 767px) and (orientation: portrait) {
     .sg-plane {
       top: 20%; } }
-
-#planeSvg {
-  width: 100%;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-direction: alternate; }
 
 /* The animation code */
 @keyframes planeMove {
@@ -173,7 +171,12 @@ canvas {
   left: 20%;
   width: 60%;
   height: 35%;
-  z-index: 5; }
+  z-index: 5;
+  visibility: hidden;
+  opacity: 0; }
+  .sg-carousel.is-visible {
+    visibility: visible;
+    opacity: 1; }
   @media (max-width: 1600px) {
     .sg-carousel {
       height: 30%; } }

@@ -18,8 +18,8 @@ function is_touch_device() {
       parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "']", -30*i);
     }
     parallaxBg(e, ".sg-sky", -10);
+    parallaxBg(e, ".sg-stars", -20);
     parallaxBg(e, ".sg-baloon", -30);
-
   });
  }
   

@@ -4,6 +4,9 @@ import TweenLight from "gsap/TweenLite";
 import TimelineMax from "gsap/TimelineMax";
 // import TimelineLite from "gsap/TimelineLite";
 
+
+var goBtn = $('.sg-start');
+goBtn.click(function(){
 //
 // FETCH TREES BG-1
 //
@@ -40,6 +43,7 @@ fetch("../src/img/trees-3.svg")
   trees.each(function(index, el){
     treesOnload(index, el);
   });
+});
 });
 
 

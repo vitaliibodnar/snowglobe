@@ -35,13 +35,36 @@
       left: 0;
       width: 100%;
       text-align: center;
+      z-index: 1;
     }
     .sg-baloon__img {
-      max-height: 60vh;
+      max-height: 55vh;
+    }
+    .sg-stars {
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 100%;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .5s;
+    }
+    .sg-stars.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .sg-stars__img {
+
     }
     .is-moving {
       animation: baloonMove 3s;
       animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+    }
+    .is-moving-upper {
+      animation: baloonMoveUpper 3s;
+      animation-timing-function: ease-in;
       animation-fill-mode: forwards;
     }
     .sg-start {
@@ -51,7 +74,11 @@
     @keyframes baloonMove {
       0%   { top: 100% }
       40%   { top: -10% }
-      100%   { top: 1% }
+      100%   { top: 5% }
+    }
+    @keyframes baloonMoveUpper {
+      0%   { top: 5% }
+      100%   { top: -5000px }
     }
   </style>
 </head>
@@ -63,6 +90,9 @@
       <!-- SLIDE-1 -->
       <section class="sg-splash sg-slide" data-slide="1">
         <div class="sg-sky"></div>
+        <div class="sg-stars">
+          <img src="../src/img/stars.svg" class="sg-stars__img" alt="">
+        </div>
         <div class="sg-baloon">
           <img src="../src/img/baloon.svg" class="sg-baloon__img" alt="">
           <button class="sg-start">

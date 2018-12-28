@@ -6,6 +6,12 @@
     height: 35%;
     // height: auto;
     z-index: 5;
+    visibility: hidden;
+    opacity: 0;
+    &.is-visible {
+        visibility: visible;
+        opacity: 1;
+    }
     @media (max-width: 1600px) {
         height: 30%;
     }
