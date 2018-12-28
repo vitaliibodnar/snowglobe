@@ -55,6 +55,7 @@
       z-index: 2;
       opacity: 0;
       visibility: hidden;
+      -webkit-transition: all .5s;
       transition: all .5s;
     }
     .sg-stars.is-visible {
@@ -65,23 +66,39 @@
 
     }
     .is-moving {
-      animation: baloonMove 3s;
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: forwards;
+      -webkit-animation: baloonMove 3s;
+              animation: baloonMove 3s;
+      -webkit-animation-timing-function: ease-in-out;
+              animation-timing-function: ease-in-out;
+      -webkit-animation-fill-mode: forwards;
+              animation-fill-mode: forwards;
     }
     .is-moving-upper {
-      animation: baloonMoveUpper 3s;
-      animation-timing-function: ease-in;
-      animation-fill-mode: forwards;
+      -webkit-animation: baloonMoveUpper 3s;
+              animation: baloonMoveUpper 3s;
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+      -webkit-animation-fill-mode: forwards;
+              animation-fill-mode: forwards;
     }
     .sg-start {
       opacity: 0;
+    }
+
+    @-webkit-keyframes baloonMove {
+      0%   { top: 100% }
+      40%   { top: -10% }
+      100%   { top: 5% }
     }
 
     @keyframes baloonMove {
       0%   { top: 100% }
       40%   { top: -10% }
       100%   { top: 5% }
+    }
+    @-webkit-keyframes baloonMoveUpper {
+      0%   { top: 5% }
+      100%   { top: -5000px }
     }
     @keyframes baloonMoveUpper {
       0%   { top: 5% }
@@ -96,6 +113,7 @@
       top: 0;
       width: 100%;
       z-index: 30;
+      -webkit-transition: all .3s;
       transition: all .3s;
     }
     #app-preloader.is-hidden {
@@ -112,30 +130,46 @@
       margin: 0 5px;
       position: relative;
       top: 50%;
-      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
       vertical-align: top;
       width: 10px;
     }
     #app-preloader span:nth-child(1) {
-      animation: pulse 1s infinite 0.2s;
+      -webkit-animation: pulse 1s infinite 0.2s;
+              animation: pulse 1s infinite 0.2s;
     }
     #app-preloader span:nth-child(2) {
-      animation: pulse 1s infinite 0.4s;
+      -webkit-animation: pulse 1s infinite 0.4s;
+              animation: pulse 1s infinite 0.4s;
     }
     #app-preloader span:nth-child(3) {
-      animation: pulse 1s infinite 0.6s;
+      -webkit-animation: pulse 1s infinite 0.6s;
+              animation: pulse 1s infinite 0.6s;
     }
     #app-preloader span:nth-child(4) {
-      animation: pulse 1s infinite 0.8s;
+      -webkit-animation: pulse 1s infinite 0.8s;
+              animation: pulse 1s infinite 0.8s;
     }
     #app-preloader span:nth-child(5) {
-      animation: pulse 1s infinite 1s;
+      -webkit-animation: pulse 1s infinite 1s;
+              animation: pulse 1s infinite 1s;
     }
     .no-cssanimations #app-preloader {
       background: #000 url("preloader-fallback.gif") no-repeat 50% 50%;
     }
     .no-cssanimations #app-preloader span {
       display: none;
+    }
+
+    @-webkit-keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.2;
+      }
     }
 
     @keyframes pulse {

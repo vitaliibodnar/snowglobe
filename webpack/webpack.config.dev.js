@@ -10,7 +10,11 @@ module.exports = merge(common, {
     chunkFilename: 'js/[name].chunk.js'
   },
   devServer: {
-    inline: true
+    // inline: true
+    // compress: false,
+    host: '192.168.169.246',
+    port: 9000,
+    // contentBase: Path.resolve(__dirname, '../src')
   },
   plugins: [
     new Webpack.DefinePlugin({

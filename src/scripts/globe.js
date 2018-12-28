@@ -1,7 +1,7 @@
 import Draggable from 'gsap/Draggable';
 import TweenLite from 'gsap/TweenLite';
 import $ from 'jquery';
-// import Shake from 'shake.js';
+import Shake from 'shake.js';
 
 var elements = document.getElementsByClassName('canvas_globe');
 for (var i = 0; i < elements.length; i++)  {
@@ -520,8 +520,9 @@ if (wWidth < 1025) {
     'I hear and I forget. I see and I remember. I do and I understand.',
   ];
 
-  function successShake() {
-    $('.sg-final__img[data-hero="'+el.getAttribute('data-animal')+'"]').addClass('is-active');
+
+  function successShake(element) {
+    $('.sg-final__img[data-hero="'+element.getAttribute('data-animal')+'"]').addClass('is-active');
     var msg = fortuneText[Math.floor(Math.random()*fortuneText.length)];
     $('.sg-final__msg').text(msg);
     setTimeout(function(){
@@ -536,42 +537,71 @@ if (wWidth < 1025) {
       selectText.addClass('is-visible');
     },1500);
   }
+  var ww = $(window).width();
+  if (ww < 768) {
+    var shakeCounter = 0;
+    //listen to shake event
+    var shakeEvent = new Shake({threshold: 15});
+    shakeEvent.start();
+    window.addEventListener('shake', function(){
+        shakeCounter++;
+        if (shakeCounter > 6) {
+          snowShow.shake();
+          var zzz = $('.sg-carousel__slide[data-current="1"]').find('.canvas_globe');
+          $('.sg-final__img[data-hero="'+zzz.data('animal')+'"]').addClass('is-active');
+          var msg = fortuneText[Math.floor(Math.random()*fortuneText.length)];
+          $('.sg-final__msg').text(msg);
+          setTimeout(function(){
+            $('.sg-final').addClass('is-active');
+          },1500);
+        } else {
+          snowShow.shake();
+          unsuccessShake();
+        }
+    });
   
-  var lastPos = {x:0,y:0};
-  Draggable.create( elem , {
-    type: "x,y",
-    onPress:function(){
-      lastPos.x = this.x;
-      lastPos.y = this.y; 
-    },
-    onDragEnd:function(){
-      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
+    //stop listening
+    function stopShake(){
+        shakeEvent.stop();
     }
-  });
-  Draggable.create( canvas , {
-    type: "x,y",
-    onPress:function(){
-      lastPos.x = this.x;
-      lastPos.y = this.y; 
-    },
-    onDragStart:function(){
-      startTimer();
-      snowShow.shake();
-    },
-    onDrag:function(){
-      
-    },
-    onDragEnd:function(){
-      if (showPopup == false) {
-        clearTimeout(dragTime);
-        unsuccessShake();
+  } else {
+    var lastPos = {x:0,y:0};
+    Draggable.create( elem , {
+      type: "x,y",
+      onPress:function(){
+        lastPos.x = this.x;
+        lastPos.y = this.y; 
+      },
+      onDragEnd:function(){
+        TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
       }
-      else {
-        successShake();
+    });
+    Draggable.create( canvas , {
+      type: "x,y",
+      onPress:function(){
+        lastPos.x = this.x;
+        lastPos.y = this.y; 
+      },
+      onDragStart:function(){
+        startTimer();
+        snowShow.shake();
+      },
+      onDrag:function(){
+        
+      },
+      onDragEnd:function(){
+        if (showPopup == false) {
+          clearTimeout(dragTime);
+          unsuccessShake();
+        }
+        else {
+          successShake(el);
+        }
+        TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
       }
-      TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
-    }
-  });
+    });
+  }
+  
   
 
   $('.sg-again').click(function(){
@@ -580,6 +610,9 @@ if (wWidth < 1025) {
       $('.sg-final__img').removeClass('is-active');
       $('.sg-final__msg').text('');
     },1500);
+    
   });
 }
+
+
 
