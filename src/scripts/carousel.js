@@ -9,6 +9,8 @@ let carousel = $('.sg-carousel__slides'),
     next = $('.sg-carousel__arrow--next'),
     prev = $('.sg-carousel__arrow--prev');
 
+// let currentSlide = $('.sg-carousel__slide[data-current="1"]');
+
 
 function nextSlide() {
   slide.each((i, item) => { 
@@ -47,3 +49,14 @@ var ww = $(window).width();
 if (ww < 768) {
   swipeSlide();
 }
+
+function globeHover(arrow, slide) {
+  arrow.mouseenter(function(){
+    $('.sg-carousel__slide[data-current="'+slide+'"]').addClass('is-hovered');
+  });
+  arrow.mouseleave(function(){
+    $('.sg-carousel__slide[data-current="'+slide+'"]').removeClass('is-hovered');
+  });
+}
+globeHover(next, 3);
+globeHover(prev, 2);

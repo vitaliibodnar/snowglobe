@@ -1,3 +1,12 @@
+body,
+.sg-wrapper {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; }
+
 *, a, button {
   outline: none;
   text-decoration: none;
@@ -63,7 +72,8 @@ img, svg {
     width: 100%; }
 
 .sg-slide {
-  transition: transform .3s; }
+  transition: transform .3s;
+  overflow: hidden; }
 
 .sg-start {
   opacity: 1;
@@ -274,7 +284,8 @@ canvas {
       z-index: 2; }
       @media (max-width: 767px) {
         .sg-carousel__slide[data-current="2"] {
-          left: -90%; } }
+          left: -90%;
+          z-index: 0; } }
       @media (max-width: 767px) and (orientation: landscape) {
         .sg-carousel__slide[data-current="2"] {
           left: -50%; } }
@@ -284,10 +295,21 @@ canvas {
       z-index: 1; }
       @media (max-width: 767px) {
         .sg-carousel__slide[data-current="3"] {
-          left: 90%; } }
+          left: 90%;
+          z-index: 0; } }
       @media (max-width: 767px) and (orientation: landscape) {
         .sg-carousel__slide[data-current="3"] {
           left: 50%; } }
+    .sg-carousel__slide.is-hovered[data-current="2"], .sg-carousel__slide.is-hovered[data-current="3"] {
+      transform: scale(0.75); }
+  @media (max-width: 767px) {
+    .sg-carousel__nav {
+      width: 100vw;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 45vh;
+      box-sizing: border-box; } }
   .sg-carousel__dots {
     position: absolute;
     top: 100%;
@@ -320,24 +342,32 @@ canvas {
     font-size: 0;
     background-color: transparent;
     box-shadow: none;
-    border: none; }
+    border: none;
+    cursor: pointer; }
     @media (max-width: 767px) {
       .sg-carousel__arrow {
-        display: none; } }
-    .sg-carousel__arrow:after {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      border-top: 4px solid #242638;
-      border-left: 4px solid #242638; }
-    .sg-carousel__arrow:before {
-      content: '';
-      position: absolute;
-      height: 40vh;
-      bottom: -50px;
-      width: 18vw;
-      z-index: 4; }
+        position: absolute;
+        height: 100%;
+        top: 0;
+        width: 19%; } }
+    .sg-carousel__arrow:hover .sg-carousel__slide {
+      opacity: 0.1; }
+    @media (min-width: 768px) {
+      .sg-carousel__arrow:after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-top: 4px solid #242638;
+        border-left: 4px solid #242638; } }
+    @media (min-width: 768px) {
+      .sg-carousel__arrow:before {
+        content: '';
+        position: absolute;
+        height: 40vh;
+        bottom: -50px;
+        width: 18vw;
+        z-index: 4; } }
     .sg-carousel__arrow--prev {
       right: 100%; }
       .sg-carousel__arrow--prev:before {
@@ -346,6 +376,10 @@ canvas {
         transform: rotate(-45deg);
         left: 5px;
         top: 5px; }
+      @media (max-width: 767px) {
+        .sg-carousel__arrow--prev {
+          left: 0;
+          right: auto; } }
     .sg-carousel__arrow--next {
       left: 100%; }
       .sg-carousel__arrow--next:before {
@@ -354,6 +388,28 @@ canvas {
         transform: rotate(135deg);
         left: -15px;
         top: 5px; }
+      @media (max-width: 767px) {
+        .sg-carousel__arrow--next {
+          left: auto;
+          right: 0; } }
+
+.is-shaking {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation-delay: .25s;
+  animation-iteration-count: 2;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px; }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0); }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0); }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0); } }
 
 .sg-final {
   position: fixed;

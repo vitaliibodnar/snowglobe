@@ -11,8 +11,8 @@ module.exports = merge(common, {
   },
   devServer: {
     // inline: true
-    // compress: false,
-    host: '192.168.169.246',
+    compress: false,
+    host: '10.0.1.2',
     port: 9000,
     // contentBase: Path.resolve(__dirname, '../src')
   },

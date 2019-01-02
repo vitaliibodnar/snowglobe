@@ -8,6 +8,16 @@
 //   // cursor: url("../img/cursor-default.png"), auto;
 // }
 
+body,
+.sg-wrapper {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 *, a, button {
   outline: none;
   text-decoration: none;
