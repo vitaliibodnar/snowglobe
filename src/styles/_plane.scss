@@ -11,31 +11,8 @@
     @media (max-width: 767px) and (orientation: portrait) {
       width: 30vw;
     }
-    &.is-moving {
-      animation: planeMove 25s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-    }
   }
   @media (max-width: 767px) and (orientation: portrait) {
     top: 20%;
   }
-}
-
-
-
-
-/* The animation code */
-@keyframes planeMove {
-  0%   { right: 100%; }
-  10%   { right: 87%; }
-  20%   { right: 74%; }
-  30%   { right: 61%; }
-  40%   { right: 48%; }
-  50%   { right: 35%; }
-  60%   { right: 22%; }
-  70%   { right: 9%; }
-  80%   { right: -4%; }
-  90%   { right: -17%; }
-  100%   { right: -30%; }
 }

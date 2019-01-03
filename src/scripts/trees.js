@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import TweenLight from "gsap/TweenLite";
-// import TweenMax from "gsap/TweenMax";
 import TimelineMax from "gsap/TimelineMax";
-// import TimelineLite from "gsap/TimelineLite";
 
 
 var goBtn = $('.sg-start');

@@ -56,54 +56,15 @@
       z-index: 2;
       opacity: 0;
       visibility: hidden;
-      -webkit-transition: all .5s;
-      transition: all .5s;
+      -webkit-transition: opacity .5s linear;
+      transition: opacity .5s linear;
     }
     .sg-stars.is-visible {
       opacity: 1;
       visibility: visible;
     }
-    .sg-stars__img {
-
-    }
-    .is-moving {
-      -webkit-animation: baloonMove 3s;
-              animation: baloonMove 3s;
-      -webkit-animation-timing-function: ease-in-out;
-              animation-timing-function: ease-in-out;
-      -webkit-animation-fill-mode: forwards;
-              animation-fill-mode: forwards;
-    }
-    .is-moving-upper {
-      -webkit-animation: baloonMoveUpper 3s;
-              animation: baloonMoveUpper 3s;
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-      -webkit-animation-fill-mode: forwards;
-              animation-fill-mode: forwards;
-    }
     .sg-start {
       opacity: 0;
-    }
-
-    @-webkit-keyframes baloonMove {
-      0%   { top: 100% }
-      40%   { top: -10% }
-      100%   { top: 5% }
-    }
-
-    @keyframes baloonMove {
-      0%   { top: 100% }
-      40%   { top: -10% }
-      100%   { top: 5% }
-    }
-    @-webkit-keyframes baloonMoveUpper {
-      0%   { top: 5% }
-      100%   { top: -5000px }
-    }
-    @keyframes baloonMoveUpper {
-      0%   { top: 5% }
-      100%   { top: -5000px }
     }
 
     #app-preloader {
@@ -114,8 +75,8 @@
       top: 0;
       width: 100%;
       z-index: 30;
-      -webkit-transition: all .3s;
-      transition: all .3s;
+      -webkit-transition: opacity .3s linear;
+      transition: opacity .3s linear;
     }
     #app-preloader.is-hidden {
       opacity: 0;
@@ -156,12 +117,6 @@
       -webkit-animation: pulse 1s infinite 1s;
               animation: pulse 1s infinite 1s;
     }
-    .no-cssanimations #app-preloader {
-      background: #000 url("preloader-fallback.gif") no-repeat 50% 50%;
-    }
-    .no-cssanimations #app-preloader span {
-      display: none;
-    }
 
     @-webkit-keyframes pulse {
       0%,
@@ -184,6 +139,7 @@
     }
 
   </style>
+  
 </head>
 <body class="">
   <!-- <canvas id="sg-app"></canvas> -->
@@ -276,7 +232,6 @@
           <img src="../src/img/pinguin.svg" alt="" data-hero='pinguin' class="sg-final__img">
           <img src="../src/img/fox.svg" alt="" data-hero='fox' class="sg-final__img">
         </div>
-        <div id="share"></div>
       </section>
   </div>
 </body>

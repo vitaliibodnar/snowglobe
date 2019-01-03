@@ -38,6 +38,7 @@
     "html-webpack-plugin": "^4.0.0-beta.2",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.9.4",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.21.0",
@@ -47,12 +48,14 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "autoprefixer": "^9.4.4",
     "cloud9carousel": "^2.2.0",
     "gsap": "^2.0.2",
     "jquery": "^3.3.1",
     "jquery-touchswipe": "^1.6.19",
     "pixi-svg": "^1.0.1",
     "pixi.js": "^4.8.3",
+    "postcss-cli": "^6.1.0",
     "shake.js": "^1.2.2",
     "slick-carousel": "^1.8.1"
   }

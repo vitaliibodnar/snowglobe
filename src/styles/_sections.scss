@@ -3,16 +3,8 @@
     width: 108%;
     height: 108%;
     left: -4%;
-    // bottom: -4%;
     bottom: -100%;
     overflow: hidden;
-    transition: all 1s;
-    &.is-visible {
-        bottom: -40%;
-    }
-    &.is-active {
-        bottom: -4%;
-    }
     &__bg {
         position: absolute;
         bottom: 0;
@@ -38,7 +30,6 @@
 
     &[data-section="1"] {
         z-index: 4;
-        // bottom: -5%;
     }
     &[data-section="2"] {
         z-index: 3;
@@ -53,44 +44,46 @@
 
 .sg-sky {
     position: absolute;
-    // top: -100px;
     top: -1000px;
     left: -2%;
     width: 104%;
-    transition: top 2s ease-out;
     svg {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+        @media (max-width: 767px) and (orientation: portrait) {
+            transform: scale(1.5);
+        }
     }
 }
 
 
 .sg-slide {
-    transition: transform .3s;
     overflow: hidden;
 }
 
 .sg-start {
     opacity: 1;
-    transition: .5s;
+    -webkit-transition: top .5s linear;
+    transition: top .5s linear;
     border: none;
     background: none;
     box-shadow: none;
     cursor: pointer;
     position: absolute;
     top: calc(100% + 30px);
-    left: 50%;
-    transform: translateX(-50%);
-    transition: top .3s;
+    left: calc(50% - 40px);
+    -webkit-transition: transform 0.3s linear;
+    transition: transform 0.3s linear;
     span {
         display: block;
         margin-bottom: 15px;
     }
     @media (min-width: 768px) {
         &:hover {
-            top: calc(100% + 40px);
+            -webkit-transform: translateY(10px);
+            transform: translateY(10px);
         }   
     }
 }

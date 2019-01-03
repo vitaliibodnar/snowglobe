@@ -345,11 +345,6 @@ if (wWidth < 1025) {
   
   // Start the snow globe
   snowShow.startSnow();
-  
-  // Shake the globe on click
-  // canvas.onclick = function() {
-  //   snowShow.shake();
-  // };
 
   var elem = document.querySelectorAll('.sg-carousel__slide > div');
   var showPopup = false,
@@ -526,7 +521,7 @@ if (wWidth < 1025) {
     var msg = fortuneText[Math.floor(Math.random()*fortuneText.length)];
     $('.sg-final__msg').text(msg);
     setTimeout(function(){
-      $('.sg-final').addClass('is-active');
+      TweenLite.to($('.sg-final'), 1, { opacity: 1, visibility: 'visible', zIndex: 9});
     },1000);
   }
   function onShake() {
@@ -556,7 +551,7 @@ if (wWidth < 1025) {
           var msg = fortuneText[Math.floor(Math.random()*fortuneText.length)];
           $('.sg-final__msg').text(msg);
           setTimeout(function(){
-            $('.sg-final').addClass('is-active');
+            TweenLite.to($('.sg-final'), 1, { opacity: 1, visibility: 'visible', zIndex: 9});
           },1500);
         } else {
           snowShow.shake();
@@ -564,11 +559,6 @@ if (wWidth < 1025) {
           animateCurrent();
         }
     });
-  
-    //stop listening
-    function stopShake(){
-        shakeEvent.stop();
-    }
   } else {
     var lastPos = {x:0,y:0};
     Draggable.create( elem , {
@@ -627,6 +617,7 @@ if (wWidth < 1025) {
 
   $('.sg-again').click(function(){
     $('.sg-final').removeClass('is-active');
+    TweenLite.to($('.sg-final'), 1, { opacity: 0, visibility: 'hidden', zIndex: 0});
     setTimeout(function(){
       $('.sg-final__img').removeClass('is-active');
       $('.sg-final__msg').text('');

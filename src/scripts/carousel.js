@@ -2,7 +2,8 @@ import 'slick-carousel/slick/slick.scss';
 
 import $ from 'jquery';
 import swipe from 'jquery-touchswipe';
-
+import TweenLite from 'gsap/TweenLite';
+var ww = $(window).width();
 
 let carousel = $('.sg-carousel__slides'),
     slide = $('.sg-carousel__slide'),
@@ -10,19 +11,76 @@ let carousel = $('.sg-carousel__slides'),
     prev = $('.sg-carousel__arrow--prev');
 
 
+// function nextSlide() {
+//   slide.each((i, item) => { 
+//     let curPos = item.getAttribute('data-current');
+    // curPos == 3 ? item.setAttribute('data-current', 1) : item.setAttribute('data-current', +curPos + 1);
+//   });
+// }
+
+// function prevSlide() {
+//   slide.each((i, item) => { 
+//     let curPos = item.getAttribute('data-current');
+//     curPos == 1 ? item.setAttribute('data-current', 3) : item.setAttribute('data-current', +curPos - 1);
+//   });
+// }
+
 function nextSlide() {
   slide.each((i, item) => { 
     let curPos = item.getAttribute('data-current');
-    curPos == 3 ? item.setAttribute('data-current', 1) : item.setAttribute('data-current', +curPos + 1);
+    if (curPos == 3) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '0', scaleX:1, scaleY:1});
+      } else {
+        TweenLite.to(item, 0.5, { left: '33.3333%', scaleX:1, scaleY:1});
+      }
+      item.setAttribute('data-current', 1);
+    } if (curPos == 2) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '90%', scaleX:0.7, scaleY:0.7 });
+      } else {
+        TweenLite.to(item, 0.5, { left: '66.6666%', scaleX:0.7, scaleY:0.7 });
+      }
+      item.setAttribute('data-current', 3);
+    } if (curPos == 1) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '-90%', scaleX:0.7, scaleY:0.7 });
+      } else {
+        TweenLite.to(item, 0.5, { left: '0', scaleX:0.7, scaleY:0.7 });
+      }
+      item.setAttribute('data-current', 2);
+    }
   });
 }
 
 function prevSlide() {
   slide.each((i, item) => { 
     let curPos = item.getAttribute('data-current');
-    curPos == 1 ? item.setAttribute('data-current', 3) : item.setAttribute('data-current', +curPos - 1);
+    if (curPos == 3) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '-90%', scaleX:0.7, scaleY:0.7 });
+      } else {
+        TweenLite.to(item, 0.5, { left: '0', scaleX:0.7, scaleY:0.7 });
+      }
+      item.setAttribute('data-current', 2);
+    } if (curPos == 2) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '0', scaleX:1, scaleY:1});
+      } else {
+        TweenLite.to(item, 0.5, { left: '33.3333%', scaleX:1, scaleY:1});
+      }
+      item.setAttribute('data-current', 1);
+    } if (curPos == 1) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '90%', scaleX:0.7, scaleY:0.7 });
+      } else {
+        TweenLite.to(item, 0.5, { left: '66.6666%', scaleX:0.7, scaleY:0.7 });
+      }
+      item.setAttribute('data-current', 3);
+    }
   });
 }
+
 next.click(() => {
   nextSlide();
 });
@@ -43,18 +101,23 @@ function swipeSlide() {
   });
 }
 
-var ww = $(window).width();
+
 if (ww < 768) {
   swipeSlide();
 }
 
 function globeHover(arrow, slide) {
+  // var gl = $('.sg-carousel__slide').getAttribute('data-current');
+  var gl = document.querySelectorAll('[data-current="'+slide+'"]');
+  console.log(gl);
   arrow.mouseenter(function(){
-    $('.sg-carousel__slide[data-current="'+slide+'"]').addClass('is-hovered');
+    // gl.addClass('is-shaking');
+    TweenLite.to(gl, 0.3, { scaleX:0.75, scaleY:0.75 });
   });
   arrow.mouseleave(function(){
-    $('.sg-carousel__slide[data-current="'+slide+'"]').removeClass('is-hovered');
+    // gl.removeClass('is-shaking');
+    TweenLite.to(gl, 0.3, { scaleX:0.7, scaleY:0.7 });
   });
 }
-globeHover(next, 3);
-globeHover(prev, 2);
+// globeHover(next, 3);
+// globeHover(prev, 2);
