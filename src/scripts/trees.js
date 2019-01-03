@@ -61,7 +61,8 @@ function treesOnload(i, element) {
 // ONLOAD TREES BG-1 ANIMATION + WAVING
 //
 function treesOne() {
-  var trees = $('#trees-bg-1 > g');
+  var trees = $('#trees-bg-1 > g'),
+      movingTree = $('#trees-bg-1 > .move-tree');
   var l = $('.l-leaves > g'),
       r = $('.r-leaves > g');
 
@@ -74,14 +75,14 @@ function treesOne() {
     }
     let rdt = Math.floor(Math.random() * 6) + 3,
         rdr = getRandomArbitrary(-3, 3);
-    // tl.to(el, rdt, {rotation: rdr, z:0, ease:Power0.easeNone, transformOrigin:"bottom", force3D: "true"});
+    tl.to(movingTree, rdt, {rotation: rdr, z:0, ease:Power0.easeNone, transformOrigin:"bottom", force3D: "true"});
   });
 
   //
   // LEAVES WAVING
   //
-  // moveLeaves(l, 2, 3, 'top right');
-  // moveLeaves(r, 2, -3, 'top left');
+  moveLeaves(l, 2, 3, 'top right');
+  moveLeaves(r, 2, -3, 'top left');
 
   function moveLeaves(e, time, angle, axis) {
     e.each(function(index, el){

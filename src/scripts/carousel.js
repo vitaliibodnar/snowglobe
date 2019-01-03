@@ -9,19 +9,17 @@ let carousel = $('.sg-carousel__slides'),
     next = $('.sg-carousel__arrow--next'),
     prev = $('.sg-carousel__arrow--prev');
 
-// let currentSlide = $('.sg-carousel__slide[data-current="1"]');
-
 
 function nextSlide() {
   slide.each((i, item) => { 
-    let  curPos = item.getAttribute('data-current');
+    let curPos = item.getAttribute('data-current');
     curPos == 3 ? item.setAttribute('data-current', 1) : item.setAttribute('data-current', +curPos + 1);
   });
 }
 
 function prevSlide() {
   slide.each((i, item) => { 
-    let  curPos = item.getAttribute('data-current');
+    let curPos = item.getAttribute('data-current');
     curPos == 1 ? item.setAttribute('data-current', 3) : item.setAttribute('data-current', +curPos - 1);
   });
 }

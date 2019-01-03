@@ -90,8 +90,9 @@ img, svg {
   .sg-start span {
     display: block;
     margin-bottom: 15px; }
-  .sg-start:hover {
-    top: calc(100% + 40px); }
+  @media (min-width: 768px) {
+    .sg-start:hover {
+      top: calc(100% + 40px); } }
 
 #sg-app {
   width: 100vw;
@@ -183,7 +184,8 @@ canvas {
   height: 35%;
   z-index: 5;
   visibility: hidden;
-  opacity: 0; }
+  opacity: 0;
+  transition: opacity 1.5s; }
   .sg-carousel.is-visible {
     visibility: visible;
     opacity: 1; }
@@ -396,7 +398,7 @@ canvas {
 .is-shaking {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   animation-delay: .25s;
-  animation-iteration-count: 2;
+  animation-iteration-count: 1;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px; }

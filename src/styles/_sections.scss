@@ -88,7 +88,9 @@
         display: block;
         margin-bottom: 15px;
     }
-    &:hover {
-        top: calc(100% + 40px);
+    @media (min-width: 768px) {
+        &:hover {
+            top: calc(100% + 40px);
+        }   
     }
 }

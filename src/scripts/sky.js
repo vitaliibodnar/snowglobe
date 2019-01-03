@@ -36,6 +36,13 @@ goBtn.click(function(){
   $('.sg-plane__wrapper').addClass('is-moving');
   $('.sg-splash').css('z-index', '0');
   setTimeout(function(){
+    $('.sg-splash').remove();
     $('.sg-carousel').addClass('is-visible');
+    setTimeout(function(){
+      $('.sg-carousel__slide:first-child').addClass('is-shaking');
+      setTimeout(function(){
+        $('.sg-carousel__slide:first-child').removeClass('is-shaking');
+      }, 2000);
+    },1000);    
   },3000);
 });

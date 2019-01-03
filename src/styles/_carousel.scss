@@ -8,6 +8,7 @@
     z-index: 5;
     visibility: hidden;
     opacity: 0;
+    transition: opacity 1.5s;
     &.is-visible {
         visibility: visible;
         opacity: 1;
@@ -269,7 +270,7 @@
 .is-shaking {
     animation: shake .82s cubic-bezier(.36,.07,.19,.97) both;
     animation-delay: .25s;
-    animation-iteration-count: 2;
+    animation-iteration-count: 1;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;

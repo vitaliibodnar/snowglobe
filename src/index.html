@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="icon" type="image/svg+xml" href="../src/img/cursor-default.png">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
   <title>Snowglobe</title>
+
   <style>
     body {
       width: 100vw;
@@ -209,12 +210,12 @@
       <!-- SLIDE-2 -->
       <section class="sg-slide">
         <section class="sg-plane"></section>
-        <section class="sg-section" data-section="1" data-depth="0.8">
+        <section class="sg-section" data-section="1">
           <div class="sg-section__bg" data-bg="1"><img src="../src/img/bg-1.png" alt=""></div>
-
           <section class="sg-carousel">
             <div class="sg-carousel__title">
-              <img src="../src/img/select-a-globe.svg" alt="Select a globe" class="sg-title-select is-visible">
+              <!-- <img src="../src/img/select-a-globe.svg" alt="Select a globe" class="sg-title-select is-visible"> -->
+              <img src="../src/img/shake-a-globe.svg" alt="Shake a globe" class="sg-title-select is-visible">
               <img src="../src/img/shake-more.svg" alt="Shake more" class="sg-title-shake">
             </div>
             <div class="sg-carousel__slides">
@@ -253,15 +254,14 @@
               <button class="sg-carousel__dot" type="button" data-number="3">3</button>
             </div> -->
           </section>
-
         </section>
-        <section class="sg-section" data-section="2" data-depth="0.6">
+        <section class="sg-section" data-section="2">
             <div class="sg-section__bg" data-bg="2"><img src="../src/img/bg-2.png" alt=""></div>
         </section>
-        <section class="sg-section" data-section="3" data-depth="0.4">
+        <section class="sg-section" data-section="3">
             <div class="sg-section__bg" data-bg="3"><img src="../src/img/bg-3.png" alt=""></div>
         </section>
-        <section class="sg-section" data-section="4" data-depth="0.2">
+        <section class="sg-section" data-section="4">
             <div class="sg-section__bg" data-bg="4"><img src="../src/img/bg-4.png" alt=""></div>
         </section>
         
@@ -276,6 +276,7 @@
           <img src="../src/img/pinguin.svg" alt="" data-hero='pinguin' class="sg-final__img">
           <img src="../src/img/fox.svg" alt="" data-hero='fox' class="sg-final__img">
         </div>
+        <div id="share"></div>
       </section>
   </div>
 </body>

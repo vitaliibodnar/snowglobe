@@ -355,9 +355,9 @@ if (wWidth < 1025) {
   var showPopup = false,
       dragTime = null;
   function startTimer() {
-    dragTime = 0;
-    showPopup = false;
-    dragTime = setTimeout(function(){ showPopup = true; }, 3000);
+    // dragTime = 0;
+    // showPopup = false;
+    dragTime = setTimeout(function(){ successShake(el); }, 1500);
   }
 
   var shakeMoreText = $('.sg-title-shake'),
@@ -527,7 +527,7 @@ if (wWidth < 1025) {
     $('.sg-final__msg').text(msg);
     setTimeout(function(){
       $('.sg-final').addClass('is-active');
-    },1500);
+    },1000);
   }
   function onShake() {
     selectText.removeClass('is-visible');
@@ -597,11 +597,17 @@ if (wWidth < 1025) {
       },
       onDragEnd:function(){
         if (showPopup == false) {
-          clearTimeout(dragTime);
+          clearTimeout(dragTime); 
           unsuccessShake();
+          setTimeout(function(){
+            $('.sg-carousel__slide[data-current="1"]').addClass('is-shaking');
+            setTimeout(function(){
+              $('.sg-carousel__slide[data-current="1"]').removeClass('is-shaking');
+            }, 2000);
+          },1000);
         }
         else {
-          successShake(el);
+          // successShake(el);
         }
         TweenLite.to(this.target,1,{ x:lastPos.x , y:lastPos.y });
       }
@@ -625,7 +631,7 @@ if (wWidth < 1025) {
       $('.sg-final__img').removeClass('is-active');
       $('.sg-final__msg').text('');
     },1500);
-    
+    shakeCounter = 0;
   });
 }
 
