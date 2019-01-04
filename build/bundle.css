@@ -411,7 +411,7 @@ canvas {
   height: 100vh;
   background: #fff;
   z-index: 0;
-  padding: 10em;
+  padding: 10vh;
   box-sizing: border-box;
   text-align: center;
   visibility: hidden;
@@ -426,7 +426,7 @@ canvas {
     .sg-final {
       padding: 80px 30px 30px; } }
   .sg-final__wrapper {
-    margin: 5em 0 0;
+    margin: 5vh 0 0;
     width: 100%;
     max-width: 1024px;
     position: absolute;
@@ -486,7 +486,7 @@ canvas {
         max-width: 30%;
         top: 30px; } }
   .sg-final .sg-again {
-    margin-top: 10em;
+    margin-top: 5vh;
     background: none;
     box-shadow: none;
     border: none;
