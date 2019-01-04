@@ -25,28 +25,54 @@ let carousel = $('.sg-carousel__slides'),
 //   });
 // }
 
+function setSlides() {
+  slide.each((i, item) => { 
+    let curPos = item.getAttribute('data-current');
+    if (curPos == 1) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '0', scaleX:1, scaleY:1, zIndex:3 });
+      } else {
+        TweenLite.to(item, 0.5, { left: '33.3333%', scaleX:1, scaleY:1, zIndex:3 });
+      }
+    } if (curPos == 3) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '90%', scaleX:0.7, scaleY:0.7, zIndex:0 });
+      } else {
+        TweenLite.to(item, 0.5, { left: '66.6666%', scaleX:0.7, scaleY:0.7, zIndex:1 });
+      }
+    } if (curPos == 2) {
+      if (ww < 768) {
+        TweenLite.to(item, 0.5, { left: '-90%', scaleX:0.7, scaleY:0.7, zIndex:0 });
+      } else {
+        TweenLite.to(item, 0.5, { left: '0', scaleX:0.7, scaleY:0.7, zIndex:2 });
+      }
+    }
+  });
+}
+setSlides();
+
 function nextSlide() {
   slide.each((i, item) => { 
     let curPos = item.getAttribute('data-current');
     if (curPos == 3) {
       if (ww < 768) {
-        TweenLite.to(item, 0.5, { left: '0', scaleX:1, scaleY:1});
+        TweenLite.to(item, 0.5, { left: '0', scaleX:1, scaleY:1, zIndex:3 });
       } else {
-        TweenLite.to(item, 0.5, { left: '33.3333%', scaleX:1, scaleY:1});
+        TweenLite.to(item, 0.5, { left: '33.3333%', scaleX:1, scaleY:1, zIndex:3 });
       }
       item.setAttribute('data-current', 1);
     } if (curPos == 2) {
       if (ww < 768) {
-        TweenLite.to(item, 0.5, { left: '90%', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '90%', scaleX:0.7, scaleY:0.7, zIndex:0 });
       } else {
-        TweenLite.to(item, 0.5, { left: '66.6666%', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '66.6666%', scaleX:0.7, scaleY:0.7, zIndex:1 });
       }
       item.setAttribute('data-current', 3);
     } if (curPos == 1) {
       if (ww < 768) {
-        TweenLite.to(item, 0.5, { left: '-90%', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '-90%', scaleX:0.7, scaleY:0.7, zIndex:0 });
       } else {
-        TweenLite.to(item, 0.5, { left: '0', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '0', scaleX:0.7, scaleY:0.7, zIndex:2 });
       }
       item.setAttribute('data-current', 2);
     }
@@ -58,23 +84,23 @@ function prevSlide() {
     let curPos = item.getAttribute('data-current');
     if (curPos == 3) {
       if (ww < 768) {
-        TweenLite.to(item, 0.5, { left: '-90%', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '-90%', scaleX:0.7, scaleY:0.7, zIndex:0 });
       } else {
-        TweenLite.to(item, 0.5, { left: '0', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '0', scaleX:0.7, scaleY:0.7, zIndex:2 });
       }
       item.setAttribute('data-current', 2);
     } if (curPos == 2) {
       if (ww < 768) {
-        TweenLite.to(item, 0.5, { left: '0', scaleX:1, scaleY:1});
+        TweenLite.to(item, 0.5, { left: '0', scaleX:1, scaleY:1, zIndex:3 });
       } else {
-        TweenLite.to(item, 0.5, { left: '33.3333%', scaleX:1, scaleY:1});
+        TweenLite.to(item, 0.5, { left: '33.3333%', scaleX:1, scaleY:1, zIndex:3 });
       }
       item.setAttribute('data-current', 1);
     } if (curPos == 1) {
       if (ww < 768) {
-        TweenLite.to(item, 0.5, { left: '90%', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '90%', scaleX:0.7, scaleY:0.7, zIndex:0 });
       } else {
-        TweenLite.to(item, 0.5, { left: '66.6666%', scaleX:0.7, scaleY:0.7 });
+        TweenLite.to(item, 0.5, { left: '66.6666%', scaleX:0.7, scaleY:0.7, zIndex:1 });
       }
       item.setAttribute('data-current', 3);
     }
@@ -107,17 +133,14 @@ if (ww < 768) {
 }
 
 function globeHover(arrow, slide) {
-  // var gl = $('.sg-carousel__slide').getAttribute('data-current');
-  var gl = document.querySelectorAll('[data-current="'+slide+'"]');
-  console.log(gl);
   arrow.mouseenter(function(){
-    // gl.addClass('is-shaking');
+    let gl = document.querySelectorAll('[data-current="'+slide+'"]');
     TweenLite.to(gl, 0.3, { scaleX:0.75, scaleY:0.75 });
   });
   arrow.mouseleave(function(){
-    // gl.removeClass('is-shaking');
+    let gl = document.querySelectorAll('[data-current="'+slide+'"]');
     TweenLite.to(gl, 0.3, { scaleX:0.7, scaleY:0.7 });
   });
 }
-// globeHover(next, 3);
-// globeHover(prev, 2);
+globeHover(next, 3);
+globeHover(prev, 2);

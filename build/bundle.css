@@ -269,36 +269,6 @@ canvas {
       @media (max-width: 767px) and (orientation: landscape) {
         .sg-carousel__slide img {
           max-height: 200px; } }
-    .sg-carousel__slide[data-current="1"] {
-      left: 33.3333%;
-      z-index: 3; }
-      @media (max-width: 767px) {
-        .sg-carousel__slide[data-current="1"] {
-          left: 0; } }
-    .sg-carousel__slide[data-current="2"] {
-      left: 0;
-      -webkit-transform: scale(0.7);
-      transform: scale(0.7);
-      z-index: 2; }
-      @media (max-width: 767px) {
-        .sg-carousel__slide[data-current="2"] {
-          left: -90%;
-          z-index: 0; } }
-      @media (max-width: 767px) and (orientation: landscape) {
-        .sg-carousel__slide[data-current="2"] {
-          left: -50%; } }
-    .sg-carousel__slide[data-current="3"] {
-      left: 66.6666%;
-      -webkit-transform: scale(0.7);
-      transform: scale(0.7);
-      z-index: 1; }
-      @media (max-width: 767px) {
-        .sg-carousel__slide[data-current="3"] {
-          left: 90%;
-          z-index: 0; } }
-      @media (max-width: 767px) and (orientation: landscape) {
-        .sg-carousel__slide[data-current="3"] {
-          left: 50%; } }
   @media (max-width: 767px) {
     .sg-carousel__nav {
       width: 100vw;

@@ -113,27 +113,14 @@
         bottom: 0;
         width: 100%;
         height: 100%;
-        img {
-            // width: 300px;
-        }
     }
     &__slide {
         width: 33.3333%;
         position: absolute;
         top: 0;
         text-align: center;
-        // -moz-transition: left .3s linear;
-        // -webkit-transition: left .3s linear;
-        // -ms-transition: left .3s linear;
-        // -o-transition: left .3s linear;
-        // transition: left .3s linear;
         @media (max-width: 767px) {
             width: 100%!important;
-            // -moz-transition: left .3s linear;
-            // -webkit-transition: left .3s linear;
-            // -ms-transition: left .3s linear;
-            // -o-transition: left .3s linear;
-            // transition: left .3s linear;
         }
         & > div {
             position: relative;
@@ -145,44 +132,37 @@
                 max-height: 200px;
             }
         }
-        &[data-current="1"] {
-            left: 33.3333%;
-            z-index: 3;
-            @media (max-width: 767px) {
-                left: 0;
-            }
-        }
-        &[data-current="2"] {
-            left: 0;
-            -webkit-transform: scale(0.7);
-                    transform: scale(0.7);
-            z-index: 2;
-            @media (max-width: 767px) {
-                left: -90%;
-                z-index: 0;
-            }
-            @media (max-width: 767px) and (orientation: landscape) {
-                left: -50%;
-            }
-        }
-        &[data-current="3"] {
-            left: 66.6666%;
-            -webkit-transform: scale(0.7);
-                    transform: scale(0.7);
-            z-index: 1;
-            @media (max-width: 767px){
-                left: 90%;
-                z-index: 0;
-            }
-            @media (max-width: 767px) and (orientation: landscape) {
-                left: 50%;
-            }
-        }
-        // &.is-hovered {
-        //     &[data-current="2"],
-        //     &[data-current="3"] {
-        //         -webkit-transform: scale(0.75);
-        //                 transform: scale(0.75);
+        // &[data-current="1"] {
+        //     left: 33.3333%;
+        //     z-index: 3;
+        //     @media (max-width: 767px) {
+        //         left: 0;
+        //     }
+        // }
+        // &[data-current="2"] {
+        //     left: 0;
+        //     -webkit-transform: scale(0.7);
+        //             transform: scale(0.7);
+        //     z-index: 2;
+        //     @media (max-width: 767px) {
+        //         left: -90%;
+        //         z-index: 0;
+        //     }
+        //     @media (max-width: 767px) and (orientation: landscape) {
+        //         left: -50%;
+        //     }
+        // }
+        // &[data-current="3"] {
+        //     left: 66.6666%;
+        //     -webkit-transform: scale(0.7);
+        //             transform: scale(0.7);
+        //     z-index: 1;
+        //     @media (max-width: 767px){
+        //         left: 90%;
+        //         z-index: 0;
+        //     }
+        //     @media (max-width: 767px) and (orientation: landscape) {
+        //         left: 50%;
         //     }
         // }
     }
@@ -233,7 +213,6 @@
         border: none;
         cursor: pointer;
         @media (max-width: 767px) {
-            // display: none;
             position: absolute;
             height: 100%;
             top: 0;
