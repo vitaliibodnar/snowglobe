@@ -26,9 +26,9 @@ function is_touch_device() {
     } else {
       let i = 1;
       for(i; i <= 4; i++) {
-        parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "'] .sg-section__bg", -30*i);
-        parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "'] .sg-section__trees", -30*i);
-        parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "'] .sg-carousel", -30*i);
+        parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "'] .sg-section__bg", -20*i);
+        parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "'] .sg-section__trees", -20*i);
+        parallaxBg(e, ".sg-section[data-section='" + Math.abs(i - 5) + "'] .sg-carousel", -20*i);
       }
     }
   });
